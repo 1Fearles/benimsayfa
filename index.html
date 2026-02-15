@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akıllı Portfolyo | [Adın Soyadın]</title>
+    <title>Akıllı Portfolyo & Oyun Portalı</title>
     <style>
         :root { --primary: #3498db; --secondary: #e67e22; --success: #2ecc71; --danger: #e74c3c; --dark: #2c3e50; --light: #f4f4f9; }
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background-color: var(--light); }
@@ -34,14 +34,15 @@
         .active-panel { padding: 10px; border: 1px solid #eee; border-top: none; border-radius: 0 0 6px 6px; }
 
         .action-links { display: flex; gap: 8px; margin-top: 10px; }
-        .btn-sm { padding: 8px; border-radius: 4px; text-decoration: none; color: white; font-size: 12px; flex: 1; text-align: center; font-weight: bold; }
+        .btn-sm { padding: 8px; border-radius: 4px; text-decoration: none; color: white; font-size: 12px; flex: 1; text-align: center; font-weight: bold; border: none; cursor: pointer; }
         .video { background: var(--danger); }
         .test { background: var(--success); }
 
         /* OYUN ALANI */
         .game-section { background: #111; color: white; padding: 30px; border-radius: 20px; text-align: center; border: 2px solid var(--primary); margin-top: 2rem; }
-        #pacmanCanvas { background: #000; border: 2px solid #444; border-radius: 10px; max-width: 100%; height: auto; }
-        #singleStartBtn { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; margin-top: 15px; font-weight: bold; }
+        #pacmanCanvas { background: #000; border: 2px solid #444; border-radius: 10px; max-width: 100%; height: auto; display: block; margin: 0 auto; }
+        #singleStartBtn { background: var(--primary); color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-size: 1.1rem; margin-top: 15px; font-weight: bold; transition: background 0.3s; }
+        #singleStartBtn:hover { background: #2980b9; }
 
         /* MODAL */
         .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); }
@@ -61,12 +62,12 @@
 <div class="container">
     <section>
         <h2>Hakkımda</h2>
-        <p>Ben [Adın], öğrenmeyi ve teknolojiyle iç içe olmayı seviyorum. Hem derslerime çalışıyor hem de kendi web sitemi geliştirerek kodlama dünyasına adım atıyorum.</p>
+        <p>Ben [Adın], teknolojiye meraklı ve sürekli yeni şeyler öğrenmeyi hedefleyen bir öğrenciyim. Bu web sitesi hem portfolyom hem de ders çalışma motivasyonumun bir parçası.</p>
         <div class="skills">
             <span class="skill-tag">HTML5 & CSS3</span>
             <span class="skill-tag">JavaScript</span>
             <span class="skill-tag">LGS Hazırlık</span>
-            <span class="skill-tag">GitHub</span>
+            <span class="skill-tag">Git & GitHub</span>
         </div>
     </section>
 
@@ -79,8 +80,8 @@
                 <div class="content-panel">
                     <p>Çarpanlar ve Katlar</p>
                     <div class="action-links">
-                        <a href="https://youtube.com" target="_blank" class="btn-sm video">İzle</a>
-                        <button onclick="startQuiz('Matematik')" class="btn-sm test" style="border:none; cursor:pointer;">Test Çöz</button>
+                        <a href="https://youtube.com" target="_blank" class="btn-sm video">🎥 İzle</a>
+                        <button onclick="startQuiz('Matematik')" class="btn-sm test">✍️ Test Çöz</button>
                     </div>
                 </div>
             </div>
@@ -88,10 +89,10 @@
                 <h3>🚀 12. Sınıf (YKS)</h3>
                 <button class="lesson-btn" onclick="toggleAccordion(this)">📊 Matematik <span>▼</span></button>
                 <div class="content-panel">
-                    <p>Türev ve İntegral</p>
+                    <p>Türev ve İntegral Giriş</p>
                     <div class="action-links">
-                        <a href="https://youtube.com" target="_blank" class="btn-sm video">İzle</a>
-                        <button onclick="startQuiz('YKS_Mat')" class="btn-sm test" style="border:none; cursor:pointer;">Test Çöz</button>
+                        <a href="https://youtube.com" target="_blank" class="btn-sm video">🎥 İzle</a>
+                        <button onclick="startQuiz('YKS_Mat')" class="btn-sm test">✍️ Test Çöz</button>
                     </div>
                 </div>
             </div>
@@ -99,12 +100,12 @@
     </section>
 
     <div class="game-section">
-        <h2 style="color: var(--primary); border: none;">🎮 Mola: Puan Toplama</h2>
-        <div style="font-size: 1.2rem; margin-bottom: 10px;">Skor: <span id="gameScore">0</span></div>
+        <h2 style="color: var(--primary); border: none;">🎮 Mola: Pac-Man Puan Toplama</h2>
+        <div style="font-size: 1.5rem; margin-bottom: 10px; color: var(--success);">Skor: <span id="gameScore">0</span></div>
         <canvas id="pacmanCanvas" width="400" height="400"></canvas>
         <br>
         <button id="singleStartBtn">OYUNU BAŞLAT</button>
-        <p style="color: #666; font-size: 0.8rem; margin-top: 10px;">Ok tuşlarıyla hareket et, kırmızıdan kaç!</p>
+        <p style="color: #888; font-size: 0.9rem; margin-top: 10px;">Ok tuşlarıyla sarı Pac-Man'i yönet, kırmızıdan kaç!</p>
     </div>
 </div>
 
@@ -113,17 +114,17 @@
         <span class="close" onclick="closeModal()">&times;</span>
         <h3 id="quizTitle">Ders Testi</h3>
         <div id="quizContainer"></div>
-        <button onclick="calcResult()" style="background:var(--success); color:white; border:none; width:100%; padding:12px; border-radius:8px; cursor:pointer; margin-top:10px;">Bitir</button>
-        <p id="resultText" style="font-weight:bold; text-align:center; margin-top:15px;"></p>
+        <button onclick="calcResult()" style="background:var(--success); color:white; border:none; width:100%; padding:12px; border-radius:8px; cursor:pointer; margin-top:10px; font-weight: bold;">Bitir</button>
+        <p id="resultText" style="font-weight:bold; text-align:center; margin-top:15px; color: var(--dark);"></p>
     </div>
 </div>
 
 <footer>
-    <p>&copy; 2026 [Adın Soyadın] | Tüm Hakları Saklıdır.</p>
+    <p>&copy; 2026 [Adın Soyadın] | GitHub Pages Üzerinde Geliştirildi.</p>
 </footer>
 
 <script>
-    // --- AKORDİYON ---
+    // --- AKORDİYON SİSTEMİ ---
     function toggleAccordion(btn) {
         const panel = btn.nextElementSibling;
         if (panel.style.maxHeight) {
@@ -151,7 +152,7 @@
         list.forEach((item, i) => {
             let html = `<div><p><b>${item.q}</b></p>`;
             item.a.forEach((opt, idx) => {
-                html += `<label style="display:block;"><input type="radio" name="q${i}" value="${idx}"> ${opt}</label>`;
+                html += `<label style="display:block; margin: 5px 0;"><input type="radio" name="q${i}" value="${idx}"> ${opt}</label>`;
             });
             html += `</div>`;
             container.innerHTML += html;
@@ -166,10 +167,10 @@
             const sel = document.querySelector(`input[name="q${i}"]:checked`);
             if(sel && parseInt(sel.value) === item.c) score++;
         });
-        document.getElementById('resultText').innerText = `Sonuç: ${list.length}/${score} doğru!`;
+        document.getElementById('resultText').innerText = `Sonuç: ${list.length} Soruda ${score} Doğru!`;
     }
 
-    // --- PAC-MAN OYUNU ---
+    // --- PAC-MAN OYUN SİSTEMİ ---
     const canvas = document.getElementById("pacmanCanvas");
     const ctx = canvas.getContext("2d");
     const startBtn = document.getElementById("singleStartBtn");
@@ -180,15 +181,21 @@
     function createCoins() {
         coins = [];
         for(let i=0; i<10; i++) {
-            coins.push({ x: Math.random()*360+20, y: Math.random()*360+20, s: 5 });
+            coins.push({ 
+                x: Math.random() * 340 + 30, 
+                y: Math.random() * 340 + 30, 
+                s: 6 
+            });
         }
     }
 
     function initGame() {
         player = { x: 200, y: 200, s: 15, spd: 12 };
         ghost = { x: 50, y: 50, s: 15, spd: 2 };
-        score = 0; scoreDisplay.innerText = "0";
-        gameActive = true; createCoins();
+        score = 0; 
+        scoreDisplay.innerText = "0";
+        gameActive = true; 
+        createCoins();
         if(animationId) cancelAnimationFrame(animationId);
         update();
         startBtn.innerText = "YENİDEN BAŞLAT";
@@ -196,35 +203,70 @@
 
     function update() {
         if (!gameActive) return;
-        ctx.fillStyle = "black"; ctx.fillRect(0, 0, 400, 400);
 
-        // Hayalet
-        let angle = Math.atan2(player.y - ghost.y, player.x - ghost.x);
-        ghost.x += Math.cos(angle) * ghost.spd; ghost.y += Math.sin(angle) * ghost.spd;
-        ctx.fillStyle = "red"; ctx.beginPath(); ctx.arc(ghost.x, ghost.y, 15, 0, Math.PI*2); ctx.fill();
+        // Temizlik
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, 400, 400);
 
-        // Altınlar
+        // 1. ALTINLAR (SARI) - Önce altınları çiziyoruz
         ctx.fillStyle = "gold";
-        coins.forEach((c, i) => {
-            ctx.beginPath(); ctx.arc(c.x, c.y, 5, 0, Math.PI*2); ctx.fill();
-            if(Math.hypot(player.x-c.x, player.y-c.y) < 20) { coins.splice(i,1); score+=10; scoreDisplay.innerText = score; if(coins.length==0) createCoins(); }
-        });
+        for (let i = coins.length - 1; i >= 0; i--) {
+            let c = coins[i];
+            ctx.beginPath();
+            ctx.arc(c.x, c.y, c.s, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Oyuncu
-        ctx.fillStyle = "yellow"; ctx.beginPath(); ctx.arc(player.x, player.y, 15, 0.2*Math.PI, 1.8*Math.PI); ctx.lineTo(player.x, player.y); ctx.fill();
+            // Altın toplama mesafesi
+            let distToCoin = Math.hypot(player.x - c.x, player.y - c.y);
+            if (distToCoin < 20) {
+                coins.splice(i, 1);
+                score += 10;
+                scoreDisplay.innerText = score;
+                if (coins.length == 0) createCoins();
+            }
+        }
 
-        // Çarpışma & Sınırlar
-        if(Math.hypot(player.x-ghost.x, player.y-ghost.y) < 30) { gameActive = false; alert("Yakalalandın! Skor: " + score); return; }
-        player.x = Math.max(15, Math.min(385, player.x)); player.y = Math.max(15, Math.min(385, player.y));
+        // 2. HAYALET (KIRMIZI) - Takip ve Çizim
+        let angle = Math.atan2(player.y - ghost.y, player.x - ghost.x);
+        ghost.x += Math.cos(angle) * ghost.spd;
+        ghost.y += Math.sin(angle) * ghost.spd;
+        
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(ghost.x, ghost.y, 15, 0, Math.PI * 2);
+        ctx.fill();
+
+        // 3. OYUNCU (PAC-MAN) - Çizim
+        ctx.fillStyle = "yellow";
+        ctx.beginPath();
+        // Ağzı açık Pac-Man efekti
+        ctx.arc(player.x, player.y, player.s, 0.2 * Math.PI, 1.8 * Math.PI);
+        ctx.lineTo(player.x, player.y);
+        ctx.fill();
+
+        // 4. HAYALETE DEĞME (OYUN BİTİŞİ)
+        let distToGhost = Math.hypot(player.x - ghost.x, player.y - ghost.y);
+        if (distToGhost < 25) {
+            gameActive = false;
+            alert("OYUN BİTTİ! Skorun: " + score);
+            return;
+        }
+
+        // Sınır Kontrolleri
+        player.x = Math.max(15, Math.min(385, player.x));
+        player.y = Math.max(15, Math.min(385, player.y));
 
         animationId = requestAnimationFrame(update);
     }
 
+    // TUŞ KONTROLLERİ
     window.addEventListener("keydown", (e) => {
-        if(!gameActive) return;
-        if(e.key=="ArrowUp") player.y-=player.spd; if(e.key=="ArrowDown") player.y+=player.spd;
-        if(e.key=="ArrowLeft") player.x-=player.spd; if(e.key=="ArrowRight") player.x+=player.spd;
-        if(["ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.key)) e.preventDefault();
+        if (!gameActive) return;
+        if (e.key == "ArrowUp") player.y -= player.spd;
+        if (e.key == "ArrowDown") player.y += player.spd;
+        if (e.key == "ArrowLeft") player.x -= player.spd;
+        if (e.key == "ArrowRight") player.x += player.spd;
+        if (["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"].includes(e.key)) e.preventDefault();
     });
 
     startBtn.onclick = initGame;
