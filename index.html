@@ -92,7 +92,7 @@
     function initGame() {
         // BAŞLANGIÇ AYARLARI
         player = { x: 200, y: 200, s: 15, spd: 18 }; 
-        ghost = { x: 50, y: 50, s: 15, spd: 1 }; 
+        ghost = { x: 50, y: 50, s: 15, spd: 0.5 }; 
         score = 0; 
         
         scoreDisplay.innerText = score;
@@ -129,7 +129,7 @@
                 
                 // --- HIZ ARTIŞI BURADA ---
                 player.spd += 0.1;
-                ghost.spd += 0.1;
+            
                 
                 scoreDisplay.innerText = score;
                 speedDisplay.innerText = player.spd.toFixed(1);
